@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   YPÊ SUPERMERCADO — DESIGN SYSTEM v1.0
+   ============================================ */
+
+/* Google Fonts são importadas via next/font no layout.tsx */
+
+/* ─── Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-canvas-cream;
+  font-family: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-hairline-soft; }
+::-webkit-scrollbar-thumb { @apply bg-ype-green-light rounded; }
+::-webkit-scrollbar-thumb:hover { @apply bg-ype-green; }
+
+/* ─── CSS Custom Properties for components ─── */
+:root {
+  --shadow-lift: 0 1px 2px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.10);
+  --shadow-float: 0 4px 16px rgba(0,0,0,0.14);
+  --shadow-navbar: 0 1px 4px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-fab-whatsapp: 0 6px 16px rgba(37,211,102,0.40);
+  --shadow-btn-primary: 0 2px 8px rgba(77,184,72,0.32);
+  --shadow-card-store: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* ─── Container ─── */
+@layer components {
+  .ype-container {
+    @apply w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10;
+  }
+
+  /* ─── Buttons ─── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-ype-green text-white font-semibold text-base px-6 py-3 rounded-pill border-0 cursor-pointer no-underline transition-all duration-180;
+    box-shadow: var(--shadow-btn-primary);
+  }
+  .btn-primary:hover { @apply bg-ype-green-dark; box-shadow: var(--shadow-float); }
+  .btn-primary:active { @apply scale-[0.97]; }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-ype-green font-semibold text-base px-6 py-3 rounded-pill cursor-pointer no-underline transition-all duration-180;
+    border: 1.5px solid #4DB848;
+  }
+  .btn-secondary:hover { @apply bg-ype-green-pale; }
+  .btn-secondary:active { @apply scale-[0.97]; }
+
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 bg-ype-green-dark text-white font-semibold text-base px-6 py-3 rounded-pill border-0 cursor-pointer no-underline transition-all duration-180;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  }
+  .btn-dark:hover { background: #1B5E20; }
+  .btn-dark:active { @apply scale-[0.97]; }
+
+  .btn-white-on-dark {
+    @apply inline-flex items-center justify-center gap-2 bg-white text-ype-green-dark font-semibold text-base px-6 py-3 rounded-pill border-0 cursor-pointer no-underline transition-all duration-180;
+  }
+  .btn-white-on-dark:hover { @apply bg-ype-green-pale; }
+  .btn-white-on-dark:active { @apply scale-[0.97]; }
+
+  .btn-outlined-on-dark {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white font-semibold text-base px-6 py-3 rounded-pill cursor-pointer no-underline transition-all duration-180;
+    border: 1.5px solid rgba(255,255,255,0.8);
+  }
+  .btn-outlined-on-dark:hover { background: rgba(255,255,255,0.1); }
+  .btn-outlined-on-dark:active { @apply scale-[0.97]; }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent font-semibold text-sm px-4 py-2 rounded-pill cursor-pointer no-underline transition-all duration-180;
+    color: rgba(30,30,30,0.60);
+    border: 1px solid #DDE5DD;
+  }
+  .btn-ghost:hover { @apply bg-concrete-light; }
+
+  .btn-chip {
+    @apply inline-flex items-center justify-center bg-[#EEF2EE] font-semibold text-[13px] px-[14px] py-[6px] rounded-pill cursor-pointer transition-all duration-180;
+    color: rgba(30,30,30,0.78);
+    border: 1px solid transparent;
+  }
+  .btn-chip:hover { @apply bg-hairline; }
+
+  .btn-chip-active {
+    @apply inline-flex items-center justify-center bg-ype-green-dark text-white font-semibold text-[13px] px-[14px] py-[6px] rounded-pill cursor-pointer;
+  }
+
+  /* ─── Cards ─── */
+  .card-dept {
+    @apply bg-white rounded-card overflow-hidden cursor-pointer no-underline block transition-all duration-300;
+    box-shadow: var(--shadow-lift);
+  }
+  .card-dept:hover { box-shadow: var(--shadow-float); @apply -translate-y-1; }
+
+  .card-product {
+    @apply bg-white rounded-card overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-lift);
+  }
+  .card-product:hover { box-shadow: var(--shadow-float); @apply -translate-y-1; }
+
+  .card-brand {
+    @apply bg-white rounded-card-sm overflow-hidden cursor-pointer transition-all duration-200;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.10);
+  }
+  .card-brand:hover { box-shadow: var(--shadow-lift); @apply scale-[1.02]; }
+
+  /* ─── Badges ─── */
+  .badge-offer {
+    @apply inline-flex items-center bg-fresh-orange text-white font-bold text-[12px] uppercase tracking-[0.06em] px-2 py-[2px] rounded-[6px];
+  }
+  .badge-new {
+    @apply inline-flex items-center bg-ype-green text-white font-bold text-[12px] uppercase tracking-[0.06em] px-2 py-[2px] rounded-[6px];
+  }
+  .badge-info {
+    @apply inline-flex items-center bg-ype-green-pale text-ype-green-dark font-semibold text-[12px] px-2 py-[2px] rounded-[6px];
+  }
+
+  /* ─── Typography Utilities ─── */
+  .section-eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.08em] text-ype-green;
+  }
+  .section-title {
+    @apply text-[32px] font-bold leading-[1.2] tracking-[-0.01em];
+    color: rgba(30,30,30,0.90);
+  }
+  .section-subtitle {
+    @apply text-[18px] font-normal leading-[1.7];
+    color: rgba(30,30,30,0.60);
+  }
+  .price-from {
+    @apply text-[12px] line-through;
+    color: rgba(30,30,30,0.50);
+  }
+  .price-main {
+    @apply text-[22px] font-bold leading-none text-fresh-orange;
+  }
+
+  /* ─── Misc ─── */
+  .logo-brand {
+    @apply grayscale transition-all duration-200;
+  }
+  .logo-brand:hover { @apply grayscale-0 scale-[1.04]; }
+}
+
+/* ─── Animations ─── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.35s ease-out forwards; }
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
