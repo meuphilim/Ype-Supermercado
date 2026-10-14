@@ -38,3 +38,8 @@ next-env.d.ts
 .idea/
 *.swp
 *.swo
+
+# Agent/dev tooling
+.claude/
+CLAUDE.md
+__pycache__/
